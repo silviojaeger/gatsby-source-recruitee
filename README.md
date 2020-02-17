@@ -3,16 +3,34 @@ This is a Gatsby source plugin. It allows you to pull job offers published with 
 
 ## How to install
 
-Please include installation instructions here.
-
-Gatsby documentation uses `npm` for installation. This is the recommended approach for plugins as well.
+    npm install gatsby-source-recruitee
 
 ## Examples of usage
 
-This usually shows a code example showing how to include this plugin in a site's `config.js` file.
+Add the plugin to your `gatsby-node.js` file by adding the following code to the `plugins` fild:
 
-    code example
+    {
+      resolve: `gatsby-source-recruitee`,
+      options: {
+        companyName: "COMPANY-NAME",
+      }
+    }
+
+Replaye the "COMPANY-NAME" with your company name given by recruitee. You can find it at the top of your dashboard overview in recruitee.
     
 ## How to query for data
+Example query:
 
-If this is a source plugin README, source plugins ought to allow people to query for data within their Gatsby site. Please include code examples to show how to query for data using your source plugin.
+    allRecruiteeOffer {
+        edges {
+            node {
+                title
+                description
+                requirements
+                department
+                city
+                careers_url
+                careers_apply_url
+            }
+        }
+    }
