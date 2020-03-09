@@ -8,7 +8,7 @@ Run the following command in your gatsby project root directory:
 
 ## Examples of usage
 
-Add the plugin to your `gatsby-node.js` file by adding the following code to the `plugins` fild:
+Add the plugin to your `gatsby-config.js` file by adding the following code to the `plugins` fild:
 
 ```javascript
 {
