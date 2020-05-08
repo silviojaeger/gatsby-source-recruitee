@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-recruitee",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gatsby source plugin for using data from recruitee.com in your gatsby project",
   "keywords": [
     "gatsby",
