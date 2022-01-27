@@ -1,5 +1,6 @@
 const fetch = require("node-fetch");
 const { URLSearchParams } = require("url");
+const camelcaseKeys = require('camelcase-keys');
 
 exports.sourceNodes = async ({ actions }, { companyName, department, tag }) => {
   const { createNode } = actions;
@@ -11,14 +12,14 @@ exports.sourceNodes = async ({ actions }, { companyName, department, tag }) => {
     return;
   }
   const resp = await fetch(`https://${companyName}.recruitee.com/api/offers/?${new URLSearchParams({
-    department,
-    tag,
+    ...(department && { department }),
+    ...(tag && { tag }),
   })}`);
   const data = await resp.json();
 
   data.offers.forEach(offer =>
     createNode({
-      ...offer,
+      ...camelcaseKeys(offer),
 
       id: `recruitee-${offer.id}`,
       parent: null,

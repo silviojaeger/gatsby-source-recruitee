@@ -11,6 +11,7 @@
   "author": "Silvio Jäger",
   "license": "MIT",
   "dependencies": {
+    "camelcase-keys": "^7.0.1",
     "node-fetch": "^2.6.0"
   },
   "repository": {
