@@ -19,7 +19,7 @@ exports.sourceNodes = async ({ actions }, { companyName, department, tag }) => {
 
   data.offers.forEach(offer =>
     createNode({
-      ...camelcaseKeys(offer),
+      ...camelcaseKeys(offer, { deep: true }),
 
       id: `recruitee-${offer.id}`,
       parent: null,
