@@ -14,7 +14,9 @@ Add the plugin to your `gatsby-config.js` file by adding the following code to t
 {
   resolve: `gatsby-source-recruitee`,
   options: {
-    companyName: "COMPANY-NAME",
+    companyName: "COMPANY-NAME", // required
+    department: "COMPANY-DEPARTMENT-FILTER", // optional
+    tag: "TAG-FILTER", // optional
   }
 }
 ```
@@ -31,8 +33,8 @@ allRecruiteeOffer {
       requirements
       department
       city
-      careers_url
-      careers_apply_url
+      careersUrl
+      careersApplyUrl
     }
   }
 }
