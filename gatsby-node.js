@@ -2,6 +2,22 @@ const fetch = require("node-fetch");
 const { URLSearchParams } = require("url");
 const camelcaseKeys = require('camelcase-keys');
 
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+
+  createTypes(`
+    type RecruiteeOffer implements Node {
+        id: ID!
+        title: String!
+        employmentTypeCode: String!
+        slug: String!
+        careersUrl: String!
+        careersApplyUrl: String!
+        position: Int!
+    }
+  `)
+}
+
 exports.sourceNodes = async ({ actions }, { companyName, department, tag }) => {
   const { createNode } = actions;
 
@@ -15,11 +31,12 @@ exports.sourceNodes = async ({ actions }, { companyName, department, tag }) => {
     ...(department && { department }),
     ...(tag && { tag }),
   })}`);
+
   const data = await resp.json();
 
   data.offers.forEach(offer =>
     createNode({
-      ...camelcaseKeys(offer, { deep: true }),
+      ...camelcaseKeys(offer),
 
       id: `recruitee-${offer.id}`,
       parent: null,
